@@ -1,0 +1,9 @@
+{
+	"name":"JD_Scripts",
+	"task":[
+		{
+			"config":"10 * * * * https:\/\/raw.githubusercontent.com\/lxk0301\/jd_scripts\/master\/jd_dreamFactory.js, tag=京喜工厂, enabled=true",
+
+		}
+	],
+	"description":"This is a test file"}

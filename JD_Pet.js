@@ -10,7 +10,7 @@
 =================================Quantumultx=========================
 [task_local]
 #东东萌宠
-15 6-18/6 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pet.js, tag=东东萌宠, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdmc.png, enabled=true
+15 6-18/6 * * * https://raw.githubusercontent.com/fatefree24/Scripts/main/JD_Pet.js, tag=东东萌宠, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdmc.png, enabled=true
 
 =================================Loon===================================
 [Script]
@@ -493,7 +493,12 @@ function requireConfig() {
       })
       if (process.env.JD_DEBUG && process.env.JD_DEBUG === 'false') console.log = () => {};
     } else {
-      cookiesArr.push(...[$.getdata('CookieJD2'), $.getdata('CookieJD')]);
+        let cookiesData = $.getdata('CookiesJD') || "[]";
+        cookiesData = jsonParse(cookiesData);
+        cookiesArr = cookiesData.map(item => item.cookie);
+        cookiesArr.reverse();
+        cookiesArr.push(...[$.getdata('CookieJD2'), $.getdata('CookieJD')]);
+        cookiesArr.reverse();
     }
     console.log(`共${cookiesArr.length}个京东账号\n`)
     if ($.isNode()) {
